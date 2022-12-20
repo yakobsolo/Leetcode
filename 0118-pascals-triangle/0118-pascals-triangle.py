@@ -6,7 +6,7 @@ class Solution:
             temp = [0]+pascalTriangle[-1]+[0]
             row = []
             
-            for j in range(len(pascalTriangle[-1])+1):
+            for j in range(len(temp)-1):
                 row.append(temp[j]+temp[j+1])   
             
             pascalTriangle.append(row)
