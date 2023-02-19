@@ -9,7 +9,8 @@ class Solution:
                 long = len(stack)
                 max_long = max(long, max_long)
             else:
-                stack = stack[stack.index(s[i]):]
-                stack.remove(s[i])
+                stack = stack[stack.index(s[i])+1:]
+                
                 stack.append(s[i])
         return max_long
+        
