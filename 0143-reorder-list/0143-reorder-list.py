@@ -8,25 +8,26 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        lst = []
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow=slow.next
+            fast = fast.next.next
         
-        ptr1, ptr2 = head, head
+        second = slow.next
+        prev = slow.next = None
         
-        while ptr1:
-            lst.append(ptr1.val)
-            ptr1 = ptr1.next
+        while second:
+            temp = second.next
+            second.next = prev
+            prev = second
+            second = temp
         
-        l, r = 0, len(lst) -1
-        while l<r :
-            ptr2.val = lst[l]
-            ptr2 = ptr2.next
-            ptr2.val = lst[r]
-            ptr2 = ptr2.next
-            
-            l+=1
-            r-=1
-        if len(lst)%2 == 1:
-            ptr2.val= lst[l]
-        
+        first, second = head, prev
+        while second:
+            temp1, temp2 = first.next, second.next
+            first.next = second
+            second.next = temp1
+            first = temp1
+            second = temp2
         
         
