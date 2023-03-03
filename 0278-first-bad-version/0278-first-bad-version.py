@@ -5,19 +5,16 @@ class Solution:
     def firstBadVersion(self, n: int) -> int:
         low = 1
         high = n
-        bad = []
+        min_bad = inf
         while low <= high:
             mid = (low+high)//2
             if not isBadVersion(mid):
                 low = mid +1
             elif isBadVersion(mid):
-                bad.append(mid)
+                min_bad = min(min_bad, mid)
                 high = mid -1
-        
-        if bad:
-            bad.sort()
-            return bad[0]
-        return None
+      
+        return min_bad
                 
             
         
