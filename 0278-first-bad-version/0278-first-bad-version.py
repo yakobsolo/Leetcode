@@ -13,7 +13,7 @@ class Solution:
             elif isBadVersion(mid):
                 min_bad = min(min_bad, mid)
                 high = mid -1
-      
+        
         return min_bad
                 
             
