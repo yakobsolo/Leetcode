@@ -3,11 +3,11 @@ class Solution:
         l = 1
         h = max(nums)
         minn = h
+        leng = len(nums)
         
         while l<= h:
             mid =(l+h)//2
-            print(mid)
-            leng = len(nums)
+            
             quocients = 0
             for i in range(leng):
                 quocients +=ceil(nums[i]/mid)
