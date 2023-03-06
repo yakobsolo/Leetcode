@@ -1,0 +1,26 @@
+class Solution:
+    
+    
+    
+            
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        
+        l, h = 0, len(s)-1
+        
+        
+        def recursion(l, h):
+        
+            if l>=h:
+                return
+            s[l], s[h] = s[h], s[l]
+            l+=1
+            h-=1
+            
+            recursion(l, h)
+        
+        
+        
+        recursion(l, h)
