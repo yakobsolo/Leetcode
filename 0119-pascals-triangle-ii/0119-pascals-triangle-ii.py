@@ -4,7 +4,7 @@ class Solution:
         if rowIndex == 0:
             return [1]
         
-        for i in range(rowIndex+1):
+        for i in range(rowIndex):
             temp = [0]+pascalTriangle[-1]+[0]
             row = []
             
@@ -14,3 +14,4 @@ class Solution:
                 return row
             pascalTriangle.append(row)
        
+        
