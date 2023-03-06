@@ -13,12 +13,11 @@ class TopVotedCandidate:
             if count[persons[i]] >=count[mx]:
                 mx = persons[i]
             self.leading.append(mx)
-        self.n = len(persons)
-        
-      
+           
     def q(self, t: int) -> int:
         val = bisect_right(self.times, t)
         return self.leading[val -1]
+    
 # Your TopVotedCandidate object will be instantiated and called as such:
 # obj = TopVotedCandidate(persons, times)
 # param_1 = obj.q(t)
