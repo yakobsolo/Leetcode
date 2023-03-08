@@ -10,9 +10,7 @@ class Solution:
         def Traverse(root, subRoot):
             if not root and not subRoot:
                 return True
-            if not root and subRoot:
-                return False
-            if not subRoot and root:
+            if (not root and subRoot) or (not subRoot and root):
                 return False
 
             if root.val != subRoot.val:
