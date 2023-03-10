@@ -1,15 +1,16 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        ans = []
+        ans = set()
         def issubsets(index, path):
             if index >= len(nums):
-                ans.append(path[::])
+                ans.add(tuple(path[:]))
                 return 
             
             
-            path.append(nums[index])
-            issubsets(index+1, path)
-            path.pop()
-            issubsets(index+1,path)
+            for i in range(index, len(nums)):
+                issubsets(i+1, path + [nums[i]])
+                issubsets(i+1, path)
+                
+           
         issubsets(0, [])
-        return ans
+        return list(ans)
