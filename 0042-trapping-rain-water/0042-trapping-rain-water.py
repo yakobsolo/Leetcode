@@ -1,18 +1,16 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        l,r = 0, len(height) -1
-        maxl, maxr = height[l], height[r]
+        nextgreater = []
         res = 0
-        
-        while l<r:
-            if maxl < maxr:
-                l+=1
-                maxl = max(maxl, height[l])
-                res+= maxl - height[l]
-            else:
-                r-=1
-                maxr = max(maxr, height[r])
-                res+= maxr - height[r]
-        return res
+        for i in range(len(height)):
+            while nextgreater and nextgreater[-1][1] < height[i]:
+                top = nextgreater.pop()
+                if nextgreater:
+                    
+                    minn = min(height[i], nextgreater[-1][1]) - top[-1]
+                    width = i - nextgreater[-1][0] -1
+                    res += (width)*(minn)
                 
+            nextgreater.append([i, height[i]])
+        return res
         
