@@ -7,10 +7,12 @@ class Solution:
                 
                 top = increasing.pop()
                 ans[top] = nums2[i]
-               
             increasing.append(i)
         answer =[]
+        hash = {}
+        for i in range(len(nums2)):
+            hash[nums2[i]] = i
         for j in range(len(nums1)):
-            ind = nums2.index(nums1[j])
+            ind = hash[nums1[j]]
             answer.append(ans[ind])
         return answer
