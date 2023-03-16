@@ -6,7 +6,7 @@ class Solution:
         t = True
         # if r == 0:
         #     return True
-        
+        @cache
         def predict(l, r, t):
             if l>r:
                 return 0
