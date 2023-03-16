@@ -6,18 +6,20 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        hash = defaultdict(list)
+        hash = defaultdict(int)
         def level(root, lev):
             if not root:
                 return 
             
-            hash[lev].append(root.val)
+            hash[lev] =root.val
             level(root.left, lev +1)
             
             
             level(root.right, lev+1)
         level(root, 1)
-        lis = []
-        for key in hash:
-            lis.append(hash[key][-1])
-        return lis
+        
+        return hash.values()
+        
+        # for key in hash:
+        #     lis.append(hash[key][-1])
+        # return lis
