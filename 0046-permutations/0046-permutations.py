@@ -1,25 +1,20 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
-        lis = []
         visted = set()
         
-        def permutation(nums):
-            
-            if len(lis) == len(nums):
-                ans.append(lis[::])
+        def permutation(path):
+            if len(path) == len(nums):
+                ans.append(path[:])
                 return
-                    
+            
             for i in range(len(nums)):
                 if nums[i] not in visted:
-                    
-                    lis.append(nums[i])
+                    path.append(nums[i])
                     visted.add(nums[i])
-                    permutation(nums)
-                    lis.pop()
+                    permutation(path)
+                    path.pop()
                     visted.discard(nums[i])
-
-                
-                
-        permutation(nums)
+        permutation([])
         return ans
+                
