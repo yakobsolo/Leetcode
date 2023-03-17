@@ -8,7 +8,7 @@ class Solution:
     def longestUnivaluePath(self, root: Optional[TreeNode]) -> int:
         ans = 0
         
-        def longest(node, parent):
+        def longest(node, parentval):
             nonlocal ans
             if not node:
                 return 0
@@ -17,9 +17,9 @@ class Solution:
             
             right = longest(node.right,node.val)
             ans = max(ans, left + right)
-            if node.val != parent:
+            if node.val != parentval:
                 return 0
             else:
                 return max(left, right) + 1
-        longest(root, -2000)
+        longest(root, 5)
         return ans
