@@ -32,10 +32,5 @@ class Solution:
                     path.pop()
             return 
             
-        for i in range(len(s)):
-            val = s[: i+1]
-            if validPalindrome(val):
-                path.append(val)
-                back(i+1, path)
-                path.pop()
+        back(0, [])
         return ans
