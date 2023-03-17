@@ -1,17 +1,19 @@
 class Solution:
     def splitString(self, s: str) -> bool:
-        
-        def splitS(index, prev):
+        ans = []
+        def splitS(index):
             if index == len(s):
-                return True
+                return len(ans) >= 2
+            
             
             for j in range(index, len(s)):
                 cur = int(s[index: j+1])
-                if cur+1 == prev and splitS(j+1, cur):
-                    return True
+                if ans == [] or ans[-1]-1  == cur:
+                    ans.append(cur)
+                    if splitS(j+1):
+                        return True
+                    ans.pop()
             return False
         
-        for i in range(len(s) -1):
-            val = int(s[:i+1])
-            if splitS(i+1, val): return True
-        return False
+      
+        return splitS(0)
