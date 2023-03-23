@@ -26,6 +26,5 @@ class Solution:
             
             return strg
         ans = find(n)
-        print(ans)
         return ans[k-1]
         
