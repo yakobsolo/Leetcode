@@ -13,7 +13,7 @@ class Solution:
                     i+=1
                 else:
                     nums[i], nums[pos] = nums[pos] , nums[i]
-                    if missed != -1 and pos == missed:
+                    if pos < i:
                         missed = i
                         
             else:
