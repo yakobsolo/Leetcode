@@ -1,30 +1,21 @@
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
         
-        def maxBitOr(path):
-            ans = 0
-            for i in range(len(path)):
-                if ans:
-                    
-                    ans = ans|path[i]
-                else:
-                    ans = path[i]
-            return ans
-        maxx = maxBitOr(nums)
+        leng = len(nums)
+        maxor = 0
+        for i in range(leng):
+            maxor |= nums[i]
         
-        self.count = 0
-        ans = []
-        def subset(idx , path):
-            if idx == len(nums):
-                ans.append(path[:])
-                if maxBitOr(path) == maxx:
-                    self.count +=1
-                return
-            
-            subset(idx+1, path + [nums[idx]])
-            subset(idx+1, path)
-            
-            return
-        subset(0, [])
-        return self.count
+        
+        totsub = pow(2, leng)
+        count = 0
+        
+        for i in range(1, totsub):
+            sub = 0
+            for j in range(leng):
+                if (i & (1<<j)):
+                    sub |= nums[j]
+            if sub == maxor:
+                count +=1
+        return count
             
