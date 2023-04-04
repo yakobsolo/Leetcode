@@ -19,14 +19,8 @@ class Solution:
             
             if n.bit_count() == 1:
                 ans.add(2)
-                # print(ans, n)
             else:
-                # print(prime(n))
-                for i in prime(n):
-                    
-                    ans.add(i)
-                    # print(ans, "else", n)
-            
+                ans.update(prime(n))            
         
         
             
