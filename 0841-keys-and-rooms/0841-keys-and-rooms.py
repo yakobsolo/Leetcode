@@ -1,14 +1,15 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         visted = set()
-        
-        def dfs(node):
-            visted.add(node)
-            for n in rooms[node]:
-                if n not in visted:
-                    dfs(n)
-        dfs(0)
-        if len(visted) == len(rooms):
-            return True
-        else:
-            return False
+        visted.add(0)
+        queue = deque()
+        queue += rooms[0]
+        while queue:
+            temp = len(queue)
+            for i in range(temp):
+                cur = queue.popleft()
+                if cur not in visted:
+                    queue+= rooms[cur]
+                visted.add(cur)
+        return True if len(visted) == len(rooms) else False
+            
