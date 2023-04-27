@@ -26,6 +26,7 @@ class Solution:
                             q.append((j,k))
                 if not flag:
                     self.lev = -2
+                    break
                 else:
                     self.lev+=1
                 
