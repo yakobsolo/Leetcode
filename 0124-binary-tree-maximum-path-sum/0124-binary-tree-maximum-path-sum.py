@@ -13,20 +13,16 @@ class Solution:
             
             left = dfs(node.left)
             right = dfs(node.right)
-            if left < 0 and right < 0:
-                self.max_sum = max(self.max_sum, node.val)
-                return int(node.val)
-            elif left< 0 and right>=0:
-                self.max_sum = max(self.max_sum, node.val + right)
-                return int(node.val+right)
-            elif right<0 and left>= 0:
-                self.max_sum = max(self.max_sum, node.val + left)
-                return int(node.val+left)
-            else:
-                temp = left+right+node.val
-                self.max_sum = max(self.max_sum, temp)
-                return max(left, right)+node.val
-                
             
+            temp = left + right +node.val
+            temp2 = left + node.val
+            temp3 = right + node.val
+            self.max_sum = max(temp, temp2, temp3, node.val, self.max_sum)
+            
+            return max(temp2, temp3, 0)
+            
+            
+            
+           
         dfs(root)
         return self.max_sum
