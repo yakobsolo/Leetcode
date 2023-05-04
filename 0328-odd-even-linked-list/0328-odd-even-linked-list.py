@@ -9,7 +9,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head or head.next == None or head.next.next == None: return head
+        if not head: return head
         
         odd = head
         even = head.next
@@ -22,12 +22,13 @@ class Solution(object):
             odd.next = odd.next.next
             if odd.next != None:
                 odd = odd.next
+                
             
             if even.next:
                 even.next = even.next.next
             even = even.next
             
-        print(dummynode.next, odd)   
+       
         odd.next = dummynode.next
         
         return dummynode2.next
