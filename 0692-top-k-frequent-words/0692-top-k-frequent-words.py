@@ -4,14 +4,11 @@ class Solution:
         
         for word in words:
             count[word] -=1
-        arr = [(v, k) for k, v in count.items()]
-        
-        heap = []
-        for val in arr: 
-            heapq.heappush(heap, val)
             
+        heap = [(v, k) for k, v in count.items()]
+        heapq.heapify(heap)
+        
         ans = []
-        print(heap)
         while k:
             ans.append(heapq.heappop(heap)[1])
             k-=1
