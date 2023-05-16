@@ -28,9 +28,7 @@ class Solution:
         for e1, e2 in edges:
             union(e1, e2)
 
-        root1 = find(source)
-        root2 = find(destination)
+        return find(source) ==  find(destination)
 
-        return root1 == root2
-
+        
 
