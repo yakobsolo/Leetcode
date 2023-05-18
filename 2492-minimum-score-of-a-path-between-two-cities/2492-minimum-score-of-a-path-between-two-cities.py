@@ -1,11 +1,9 @@
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
-        rep , rank =defaultdict(int), defaultdict(int)
-        for a, b , d in roads:
-            rep[a] = a
-            rep[b] = b
-            rank[a] = 1
-            rank[b] = 1
+        rep , rank ={}, {}
+        rep = {v:v for v in range(1, n+1)}
+        rank = {v:1 for v in range(1, n+1)}
+        
         def find(n):
             if n == rep[n]: return n
             rep[n] = find(rep[n])
@@ -25,6 +23,7 @@ class Solution:
                         
         for a, b, d in roads:
             union(a, b)
+            
         ans  = inf
         for a, b, d in roads:
             if find(a) == find(b) == find(1):
