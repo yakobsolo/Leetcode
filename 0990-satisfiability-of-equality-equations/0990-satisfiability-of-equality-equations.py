@@ -1,8 +1,7 @@
 class Solution:
     def equationsPossible(self, equations: List[str]) -> bool:
-        let = ["a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m" ,"n", 'o', "p", "q", 'r', "s","t", "u","v", "w","x", "y","z"] 
-        rep = {v:v for i, v in enumerate(let)}
-        rank = {v:1 for i , v in enumerate(let)}
+        rep = {chr(v):chr(v) for v in range(ord("a"), ord("z")+1)}
+        rank = {v:1 for v in rep}
         
         def find(n):
             if n == rep[n]:
