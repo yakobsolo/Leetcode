@@ -26,10 +26,10 @@ class Solution:
                 if rank[par1] >= rank[par2]:
                     # print("j")
                     rep[par2] = par1
-                    rank[par1] +=  rank[par2]
+                    rank[par1] +=  1
                 else:
                     rep[par1] = par2
-                    rank[par2] += rank[par1]
+                    rank[par2] += 1
             else:
                 return True
             return False            
