@@ -14,6 +14,7 @@ class Solution:
         def union(x, y):
             par1 = find(x)
             par2 = find(y)
+            
             rep[par2] = par1
             rank[par1] += rank[par2]
 
@@ -27,19 +28,19 @@ class Solution:
             if 0<= idx< leng and arr[idx]: return True
             
         
-        
+        max_rank = 0
         for i in range(leng-1, 0, -1):
             p = removeQueries[i]
             arr[p] = 1
             l, r = p -1, p+1
             
             if isvalid(l):
-                union(p, l)
+                union(l, p)
                 
             if isvalid(r):
-                union(p, r)
-            heapq.heappush(heap, -rank[find(p)])
-            res.append(-heap[0])
+                union(r, p)
+            max_rank = max(max_rank, rank[find(p)])
+            res.append(max_rank)
         return reversed(res)
             
             
