@@ -38,7 +38,7 @@ class Solution:
                 union(l, p)
                 
             if isvalid(r):
-                union(r, p)
+                union(p, r)
             max_rank = max(max_rank, rank[find(p)])
             res.append(max_rank)
         return reversed(res)
