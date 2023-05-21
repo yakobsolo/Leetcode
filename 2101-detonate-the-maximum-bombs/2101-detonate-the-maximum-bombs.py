@@ -14,26 +14,18 @@ class Solution:
                     if r**2 >= c:
                         graph[i].append(j)
                         
-        def bfs(point):
-            q = collections.deque()
-            visted = set()
+        def dfs(point, visted):
             
-            q.append(point)
+            count = 0
+            visted.add(point)
+            for adj in graph[point]:
+                if adj not in visted:
+                    count += dfs(adj, visted)
+            return count+1
             
-            
-            while q:
-                q_len = len(q)
-                visted.add(point)
-                
-                for i in range(q_len):
-                    top = q.popleft()
-                    visted.add(top)
-                    for adj in graph[top]:
-                        if adj not in visted:
-                            q.append(adj)
-            return len(visted)
             
         ans = 0
         for i in range(n):
-            ans = max(ans, bfs(i))
+            visted = set()
+            ans = max(ans, dfs(i, visted))
         return ans
