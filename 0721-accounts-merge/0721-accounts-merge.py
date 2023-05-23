@@ -28,7 +28,7 @@ class Solution:
                     for i in hash[key]:
                         if i in hash[k]:
                             union(key, k)
-                        
+                            break
         
         ans = []
         for par in rep:
