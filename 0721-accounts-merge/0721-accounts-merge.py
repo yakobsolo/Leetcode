@@ -9,7 +9,7 @@ class Solution:
             hash[(i, accounts[i][0])] = set(accounts[i][1:])
                 
         rep = {(i,j): (i,j) for i, j in hash}
-    
+        rank = {(i, j):1 for i, j in hash}
         def find(n):
             if n == rep[n]: return n
             rep[n] = find(rep[n])
@@ -19,8 +19,12 @@ class Solution:
             
             par1 = find(x)
             par2 = find(y)
-            
-            rep[par1] = par2
+            if rank[par1]>= rank[par2]:
+                rep[par2] = par1
+                rank[par1] +=1
+            else:
+                rep[par1] = par2
+                rank[par2] +=1
             
         for key in hash:
             for k in hash:
