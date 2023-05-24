@@ -6,19 +6,20 @@ class Solution:
                 fives +=1
                 pass
             if n == 10:
+                
+                if fives == 0: return False
                 fives -=1
                 tens +=1
-                if fives < 0: return False
-                
                 pass
             if n== 20:
                 
-                tens -=1
-                if tens < 0:
+                
+                if tens == 0:
                     fives -=3
                     if fives <0: return False
-                    tens+=1
                 else:
+                    
+                    if fives == 0: return False
                     fives -=1
-                    if fives < 0: return False
+                    tens-=1
         return True
