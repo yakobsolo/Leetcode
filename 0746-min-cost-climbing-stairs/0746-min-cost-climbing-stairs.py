@@ -2,20 +2,13 @@ class Solution:
     
     
     def minCostClimbingStairs(self, cost: List[int]) -> int:
-        memo = {}
-        min_cost = 0
-        cost.append(0)
+        first = cost[0]
+        second = cost[1]
+        
         n = len(cost)
-        def dp(i):
-            nonlocal min_cost
-            if i == 0:
-                return cost[0]
-            if i == 1:
-                return cost[1]
-            
-            if i not in memo: 
-                memo[i] = min(dp(i-1), dp(i-2)) + cost[i]
-                
-            return memo[i]
-        return dp(n-1)
+        for i in range(2, n):
+            temp  = min(first, second) + cost[i]
+            first = second
+            second = temp
+        return min(first, second)
             
