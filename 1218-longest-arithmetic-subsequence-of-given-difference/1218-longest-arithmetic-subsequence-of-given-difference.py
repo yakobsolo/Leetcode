@@ -6,15 +6,14 @@ class Solution:
         n = len(arr)
         for i in range(n):
             prev = arr[i] -difference
-            if prev in visted:
-                if arr[i] in visted:
-                
+            if prev not in dic: dic[arr[i]] = 1
+            else:
+                if arr[i] in dic:    
                     dic[arr[i]] = max(dic[prev]+1, dic[arr[i]])
                 else:
                     dic[arr[i]] = dic[prev] + 1
-            else:
-                dic[arr[i]] = 1
-            visted.add(arr[i])
+           
+            
         maxx = 0
         for key in dic:
             maxx = max(maxx, dic[key])
