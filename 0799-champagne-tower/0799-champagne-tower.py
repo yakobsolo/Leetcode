@@ -18,7 +18,7 @@ class Solution:
                 
             if flag == 0:
                 return dp[query_row][query_glass] 
-        return dp[query_row][query_glass] if dp[query_row][query_glass] <1 else 1
+        return dp[query_row][query_glass] 
                 
                 
                 
