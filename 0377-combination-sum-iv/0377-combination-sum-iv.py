@@ -6,7 +6,7 @@ class Solution:
         
         for i in range(1, target+1):
             for c in nums:
-                if i -c >= 0:
+                if i - c >= 0:
                     dp[i] += dp[i-c]
         return dp[target]
         
