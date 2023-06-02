@@ -1,13 +1,11 @@
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
-        memo = {}
         n = len(triangle)
-        def dp(i, j):
-            if i== n: 
-                return 0
-         
-            if (i, j) not in memo:
-                memo[(i, j)] = min(dp(i+1, j), dp(i+1, j+1))+triangle[i][j]
-                
-            return memo[(i, j)]
-        return dp(0, 0)
+        dp = [0] *(n+1)
+        
+        for i in range(n-1, -1, -1):
+            row = triangle[i]
+            
+            for j, v in enumerate(row):
+                dp[j] = min(dp[j], dp[j+1])+row[j]
+        return dp[0]
