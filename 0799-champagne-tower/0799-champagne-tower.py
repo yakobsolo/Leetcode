@@ -7,7 +7,7 @@ class Solution:
         for i in range(99):
             flag = 0
             if i == query_row+1: 
-                return dp[query_row][query_glass] if dp[query_row][query_glass] <1 else 1
+                return dp[query_row][query_glass] 
             for j in range(i+1):
                 if dp[i][j] - 1 <= 0:
                      continue   
@@ -17,7 +17,7 @@ class Solution:
                 dp[i][j] = 1
                 
             if flag == 0:
-                return dp[query_row][query_glass] if dp[query_row][query_glass] <1 else 1
+                return dp[query_row][query_glass] 
         return dp[query_row][query_glass] if dp[query_row][query_glass] <1 else 1
                 
                 
