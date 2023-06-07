@@ -6,8 +6,7 @@ class Solution:
         def backtrack(i, c):
             nonlocal ans
             if i == leng:
-                for i in range(n):
-                    if path[i] != 0: return 
+                if path.count(0) != n: return 
                 ans = max(ans,c)
                 return 
             path[requests[i][0]]-=1
