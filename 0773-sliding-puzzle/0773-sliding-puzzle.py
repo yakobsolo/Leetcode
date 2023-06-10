@@ -1,7 +1,7 @@
 class Solution:
     def slidingPuzzle(self, board: List[List[int]]) -> int:
         expected = [[1, 2, 3], [4, 5, 0]]
-        if board == expected: return 0
+        
         q = collections.deque()
         for i in range(2):
             for j in range(3):
