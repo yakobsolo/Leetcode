@@ -20,14 +20,14 @@ class Solution:
             
             for _ in range(q_len):
                 i, j, b= q.popleft()
-                
+                if b == expected: return lev
                 for k in range(4):
                     r, c = dl[k]+i , dr[k] + j
                     if 0<=r<2 and 0<=c<3:
                     
                         new_b = [row[:] for row in b]
                         new_b[i][j], new_b[r][c] = new_b[r][c], new_b[i][j]
-                        if new_b==expected: return lev+1
+                        
                         if str(new_b) not in visted:
                             q.append((r, c, new_b))
                             visted.add(str(new_b))
