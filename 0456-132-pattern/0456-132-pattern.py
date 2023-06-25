@@ -1,16 +1,11 @@
 class Solution:
     def find132pattern(self, nums: List[int]) -> bool:
-        nextsmaller = []
-        leng = len(nums)
-        
-        minn = -inf
-        
-        for i in range(leng-1, -1, -1):
-            if nums[i] < minn:
-                return True
-            while nextsmaller and nextsmaller[-1] < nums[i]:
-                minn = nextsmaller.pop()
-            nextsmaller.append(nums[i])
-                
-                
+        second = -inf 
+        stack = []
+        n = len(nums)
+        for i in range(n-1, -1, -1):
+            if nums[i] < second: return True
+            while stack and stack[-1] < nums[i]:
+                second = stack.pop()
+            stack.append(nums[i])
         return False
