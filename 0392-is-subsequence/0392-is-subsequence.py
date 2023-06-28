@@ -3,13 +3,14 @@ class Solution:
         i, j = 0, 0
         n , m = len(s), len(t)
         if not s: return True
-        if n>m: return False
+        
         
         while j<m:
-            if i== n: return True
-            if s[i] == t[j] and m-j >=n-i:
+            
+            if s[i] == t[j]:
                 i+=1
+                if i==n: return True
             j+=1
-        if i == n: return True
+        
         return False
                 
