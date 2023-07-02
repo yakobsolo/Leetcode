@@ -17,6 +17,6 @@ class Solution:
                         if temp == word2:
                             dp[i] = max(dp[i], dp[j]+1)
                             
-                elif m > len(sorted_words[j]) +1: break
+                
         return max(dp)
                 
