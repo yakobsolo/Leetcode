@@ -1,10 +1,7 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-    
-        cnt = defaultdict(int)
-        for c in s:
-            cnt[c] +=1
         
+        cnt = Counter(s)
         one = True
         res = 0
         for c in cnt:
