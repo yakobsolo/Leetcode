@@ -1,12 +1,9 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
     
-        cnt = {}
+        cnt = defaultdict(int)
         for c in s:
-            if c not in cnt:
-                cnt[c] = 1
-            else:
-                cnt[c] +=1
+            cnt[c] +=1
         
         one = True
         res = 0
