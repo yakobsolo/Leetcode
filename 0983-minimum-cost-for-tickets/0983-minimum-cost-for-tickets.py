@@ -3,18 +3,16 @@ class Solution:
         dp = {}
         
         n  = len(days)
-        for i in range(n-1, -1, -1):
-        
-        
+        for i in range(n):
             
             dp[i] = inf
             for d, c in zip([1, 7, 30], costs):
                 j = i
                 
-                while j < n and days[j] < days[i] + d:
-                    j +=1
+                
+                while j >= 0 and days[j] > days[i] - d:
+                    j -= 1
                     
                 dp[i] = min(dp[i], c+ dp.get(j, 0))
             
-        return dp[0]
-                
+        return dp[list(dp)[-1]]                
