@@ -8,6 +8,9 @@ class Solution:
             mid = l +(r-l)//2
             if citations[mid] <n-mid:
                 l = mid +1
+            elif citations[mid] == n-mid:
+                r = mid
+                break
             else:
                 r = mid
                 
