@@ -1,25 +1,29 @@
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
-#         if len(piles) == h:
-#             return max(piles)
-        
-#         if h >= sum(piles):
-#             return 1
-        
-        min_k = k_max = max(piles)
-        k_low = 1
-        
-        
-        while k_low <= k_max:
+        minban , maxban = 1, max(piles)
+        mink = maxban
+        def helper(ban):
             hour = 0
-
-            mid = (k_low + k_max) // 2
-            for i in range(len(piles)):
-                hour+= ceil(piles[i]/mid) 
+            curban = ban
             
-            if hour > h:
-                k_low = mid+1
+            for pile in piles:
+                hour += (pile//ban)
+                if pile % ban:
+                    hour+=1
+            if hour <= h:
+                return True
+            else: False
+                
+        
+        while minban<=maxban:
+            k = minban + (maxban-minban)//2
+            # print(k)
+            
+            if helper(k):
+                mink = min(mink, k)
+                # print(mink, k)
+                maxban = k-1
             else:
-                min_k = min(min_k, mid)
-                k_max = mid-1
-        return min_k
+                minban = k+1
+        
+        return mink
