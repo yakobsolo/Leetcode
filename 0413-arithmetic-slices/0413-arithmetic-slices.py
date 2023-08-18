@@ -4,21 +4,15 @@ class Solution:
         sums = 0
         if n >= 2:
             prev = nums[1] - nums[0]
-        
+        dp = [0] * n
         l = 0
         for i in range(2, n):
             cur = nums[i]-nums[i-1]
-            if cur != prev:
-                print(i)
-                k = i - l 
-                sums+= (k-2)*(k-1)//2
+            if cur == prev:
+                dp[i] = 1+ dp[i-1]
+                sums+=dp[i]
                 
-                l = i-1
             prev = cur
-        if n>2 and  l != i-1:
-            k = i - l +1
-            sums+= (k-2)*(k-1)/2
-                
-        return int(sums)
+        return sums
             
             
