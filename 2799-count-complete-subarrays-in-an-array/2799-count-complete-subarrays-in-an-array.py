@@ -1,13 +1,17 @@
 class Solution:
     def countCompleteSubarrays(self, nums: List[int]) -> int:
-        init = set(nums)
-        i_len = len(init)
-        count = 0
-        for i in range(len(nums)):
-            visted = set()
-            for j in range(i, len(nums)):
-                visted.add(nums[j])
-                if len(visted) == i_len:
-                    count +=1
+        unique_set = set(nums)
+        count,i = 0 ,0
+        hm = defaultdict(int) #hash map 
+
+        for j in nums : 
+            hm[j] += 1
+            while len(unique_set) == len(hm):
+                if hm[nums[i]] == 1 :
+                    hm.pop(nums[i])
+                else : 
+                    hm[nums[i]] -= 1
+                i += 1
+            count += i
         return count
                 
