@@ -15,7 +15,7 @@ class Solution:
             for let in word:
                 index = bisect_right(dic[let],cur)
                 
-                if index >= len(dic[let]):
+                if index == len(dic[let]):
                     is_sub = False
                     break
                 
