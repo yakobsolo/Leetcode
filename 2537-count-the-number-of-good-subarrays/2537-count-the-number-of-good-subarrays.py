@@ -1,22 +1,27 @@
 class Solution:
     def countGood(self, nums: List[int], k: int) -> int:
         count = defaultdict(int)
-        l , n = 0 , len(nums)
-        total =0
-        calcpairs = lambda x: (x*(x-1))//2
+        right , n = 0 , len(nums)
+        pairs =0
+        # calcpairs = lambda x: (x*(x-1))//2
         GoodSubArray =0
-        for right in range(n):
-            count[nums[right]] +=1
-            diff = calcpairs(count[nums[right]]) - calcpairs(count[nums[right]] -1)
-            
-            total += diff
-            while total>=k:
-                GoodSubArray += n-right
-                diff = calcpairs(count[nums[l]]) - calcpairs(count[nums[l]] -1)
-                total -= diff
-                
-                count[nums[l]]-=1
-                l +=1
+        for l in range(n):
+            while right<n and  pairs < k:
+                count[nums[right]] +=1
+                pairs += count[nums[right]]-1
+                right +=1
+                if right>=n: break
+            if pairs>=k:
+                GoodSubArray += n-right+1
+                pairs -= count[nums[l]] -1
+                count[nums[l]] -=1
         return GoodSubArray
+                
+            
+                
+                
+            
+            
+            
                 
                 
