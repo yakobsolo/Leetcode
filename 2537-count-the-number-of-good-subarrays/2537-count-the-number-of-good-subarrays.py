@@ -10,7 +10,6 @@ class Solution:
                 count[nums[right]] +=1
                 pairs += count[nums[right]]-1
                 right +=1
-                if right>=n: break
             if pairs>=k:
                 GoodSubArray += n-right+1
                 pairs -= count[nums[l]] -1
