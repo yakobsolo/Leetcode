@@ -12,7 +12,7 @@ class Solution:
                 right +=1
             if pairs>=k:
                 GoodSubArray += n-right+1
-                pairs -= count[nums[l]] -1
+                pairs -= (count[nums[l]] -1)
                 count[nums[l]] -=1
         return GoodSubArray
                 
