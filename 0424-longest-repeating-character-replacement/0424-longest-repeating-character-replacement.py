@@ -12,9 +12,9 @@ class Solution:
             while right-l+1 - max_char > k:
                 hash[s[l]] -=1
                 l +=1
-                max_char = 0
-                for key in hash:
-                    max_char = max(max_char, hash[key])
+                # max_char = 0
+                # for key in hash:
+                #     max_char = max(max_char, hash[key])
                 
                 
                     
