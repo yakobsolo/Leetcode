@@ -12,7 +12,6 @@ class Solution:
             else:
                 r = mid
         
-        print(r)   
         if target >= nums[r] and target <= nums[n-1]:
             l = r
             r = n-1
@@ -20,7 +19,6 @@ class Solution:
             l = 0
         else:
             return -1
-        print(l, r)
         while l<=r:
             mid = l + (r-l)//2
             
