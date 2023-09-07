@@ -1,6 +1,7 @@
 class Solution:
     def findLength(self, nums1: List[int], nums2: List[int]) -> int:
-        
+        if len(nums1) > len(nums2):
+            nums1, nums2 = nums2, nums1
         def checker(arr1, arr2):
             n = len(arr1)
             m = len(arr2)
@@ -24,4 +25,8 @@ class Solution:
 
             return max_count
         
-        return max(checker(nums1, nums2), checker(nums2, nums1))
+        if len(nums1) == len(nums2):
+            
+            return max(checker(nums1, nums2), checker(nums2, nums1))
+        else:
+            return checker(nums1, nums2)
