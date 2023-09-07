@@ -1,23 +1,18 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
+        max_count = 0
         hash = defaultdict(int)
-        max_long = 0
-        l = 0
+        
         n = len(s)
-        max_char = 0
-        for right in range(n):
-            hash[s[right]] +=1
-            max_char = max(max_char, hash[s[right]])
+        l = 0
+        max_long = 0
+        for r in range(n):
+            hash[s[r]] +=1
+            max_count = max(max_count, hash[s[r]])
             
-            while right-l+1 - max_char > k:
+            while r-l+1 - max_count >k:
                 hash[s[l]] -=1
                 l +=1
-                # max_char = 0
-                # for key in hash:
-                #     max_char = max(max_char, hash[key])
-                
-                
-                    
-                
-            max_long = max(right - l +1, max_long)
+            
+            max_long = max(max_long, r-l+1)
         return max_long
