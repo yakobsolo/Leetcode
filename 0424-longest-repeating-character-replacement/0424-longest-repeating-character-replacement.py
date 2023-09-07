@@ -10,7 +10,7 @@ class Solution:
             hash[s[r]] +=1
             max_count = max(max_count, hash[s[r]])
             
-            while r-l+1 - max_count >k:
+            if r-l+1 - max_count >k:
                 hash[s[l]] -=1
                 l +=1
             
