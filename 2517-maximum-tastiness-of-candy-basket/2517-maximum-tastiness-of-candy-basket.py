@@ -11,15 +11,15 @@ class Solution:
                     pair +=1
                     last = price[r]
                 if pair == k:
-                    return True
+                    return True 
             return False
         
-        while l<r:
-            mid = l + (r-l +1)//2
+        while l<=r:
+            mid = l + (r-l)//2
             
             if checker(mid):
-                l = mid
+                l = mid+1
             else:
                 r = mid-1
                 
-        return l
+        return r
