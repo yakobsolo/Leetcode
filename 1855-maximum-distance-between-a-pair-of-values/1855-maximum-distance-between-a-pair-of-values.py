@@ -2,7 +2,7 @@ class Solution:
     def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
         n2 = len(nums2)
         n1 = len(nums1)
-        print(n2, n1)
+        # print(n2, n1)
         max_dis = 0
         for j in range(n2-1, -1, -1):
             l  = 0
