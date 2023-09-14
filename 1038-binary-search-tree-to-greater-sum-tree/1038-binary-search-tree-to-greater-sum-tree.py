@@ -5,14 +5,13 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    tot = 0
     def bstToGst(self, root: TreeNode) -> TreeNode:
-        tot = 0
-        def bst(root):
-            nonlocal tot
-            if not root: return 0
-            bst(root.right)
-            tot += root.val
-            root.val  = tot
-            bst(root.left)
-        bst(root)
+        
+        if not root: return 0
+        self.bstToGst(root.right)
+        self.tot += root.val
+        root.val  = self.tot
+        self.bstToGst(root.left)
+        
         return root
