@@ -1,19 +1,16 @@
 class Solution:
     def minSteps(self, n: int) -> int:
+        dp = [0]*(n+1)
         
-        if n == 1:
-            return 0
-        primefactorizations = []
-        def factorization(n):
-            d = 2
-            while d ** 2<= n:
-                
-                while n%d == 0:
-                    primefactorizations.append(d)
-                    n//=d
-                d +=1
-            if n> 1:
-                primefactorizations.append(n)
-        factorization(n)
-        return sum(primefactorizations)
-        
+        for i in range(2, n+1):
+            
+            if i %2 == 0:
+                dp[i] = dp[i//2] +2
+            else:
+                j = i//2
+                while i%j != 0:
+                    j-=1
+                dp[i] = dp[j] + i//j
+        # print(dp)
+        return dp[-1]
+            
