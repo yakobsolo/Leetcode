@@ -9,22 +9,24 @@ class Employee:
 
 class Solution:
     def getImportance(self, employees: List['Employee'], id: int) -> int:
-        subordinates = defaultdict(list)
-        importance = {}
+        graph = defaultdict(list)
+        for employee in employees:
+            graph[employee.id] = employee.subordinates
+            graph[employee.id].append(employee.importance)
         
-        for emp in employees:
-            subordinates[emp.id] = emp.subordinates
-            importance[emp.id] = emp.importance
-        
-        def impcalc(cur_id):
+        def dfs(empId):
+            # print(graph)
+    
             tot = 0
-            for sub in subordinates[cur_id]:
-                tot += impcalc(sub)
-            
-            tot += importance[cur_id]
+            for i in range(len(graph[empId]) -1):
+                tot+= dfs(graph[empId][i])
+            # print(graph[empId])
+            tot += graph[empId][-1]
             return tot
-        return impcalc(id)
-        
+        return dfs(id)
+                
+                
+            
         
         
     
