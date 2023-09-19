@@ -4,14 +4,19 @@ class Solution:
         max_area = 0
         visted = set()
         directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+        
+        def isValid(r, c):
+            return  (r>=0 and r<n and c>=0 and c<m) and grid[r][c] != 0 and (r, c) not in visted
+            
         def dfs(i, j):
             
             visted.add((i, j))
             area = 0
-            for k in range(4):
-                r, c = i+directions[k][0], j+directions[k][1]
+            
+            for r, c in directions:
+                r, c = r+i, c+j
                 
-                if r>=0 and r<n and c>=0 and c<m and grid[r][c] != 0 and (r, c) not in visted:
+                if isValid(r, c):
                     area += dfs(r, c)
                     
                     
@@ -21,7 +26,5 @@ class Solution:
         for i in range(n):
             for j in range(m):
                 if grid[i][j] != 0 and (i, j) not in visted:
-                    # print(i, j)
                     max_area = max(max_area, dfs(i, j))
-                    # print(max_area)
         return max_area
