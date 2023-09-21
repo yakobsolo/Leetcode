@@ -13,18 +13,18 @@ class Solution:
         
         while queue:
             summ = 0
-            temp = deque()
+            
             leng = len(queue)
-            for parent in queue:
-                summ += parent.val
-                if parent.left:
-                    temp.append(parent.left)
-                if parent.right:
-                    temp.append(parent.right)
+            for _ in range(leng):
+                top = queue.popleft()
+                summ += top.val
+                if top.left:
+                    queue.append(top.left)
+                if top.right:
+                    queue.append(top.right)
             
             ans.append(summ/leng)
-            queue = deque()
-            queue = temp
+            
                 
         return ans
             
