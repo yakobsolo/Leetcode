@@ -24,18 +24,16 @@ class Solution:
         
         
         for j in range(m):
-            if grid[0][j] == 1 and (0, j) not in visted:
+            if grid[0][j] == 1 :
                 dfs(0, j)
         for j in range(m):
-            if grid[n-1][j] == 1 and (n-1, j) not in visted:
+            if grid[n-1][j] == 1 :
                 dfs(n-1 ,j)
         for i in range(n):
-            if grid[i][0] == 1 and (i, 0) not in visted:
-                # print(i, '------------')
+            if grid[i][0] == 1:
                 dfs(i, 0)
-                # print(count)
         for i in range(n):
-            if grid[i][m-1] == 1 and (i, m-1) not in visted:
+            if grid[i][m-1] == 1 :
                 dfs(i, m-1)
                 
         count_ones = 0
