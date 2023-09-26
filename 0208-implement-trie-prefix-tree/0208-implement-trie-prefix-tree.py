@@ -26,9 +26,7 @@ class Trie:
                 cur= cur.children[idx]
             else: return False
             
-        if cur.isEndofWord == False:
-            return False
-        return True
+        return cur.isEndofWord
                 
                 
     def startsWith(self, prefix: str) -> bool:
