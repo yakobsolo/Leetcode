@@ -33,7 +33,7 @@ class Solution:
         words.sort()
         dictionary = Trie()
         mx, mx_word= 0, ""
-        print(words)
+        # print(words)
         for word in words:
             n = len(word)
             
