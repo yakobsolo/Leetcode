@@ -9,16 +9,7 @@ class MapSum:
 
     def __init__(self):
         self.root = TrieNode()
-        self.dict= defaultdict()
-#     def search(self, word: str) -> bool:
-#         cur = self.root
-#         for w in word:
-#             idx = ord(w)-ord("a")
-#             if cur.children[idx]!=None:
-#                 cur= cur.children[idx]
-#             else: return False
-            
-#         return cur.isEndofWord
+        self.dict= {}
                 
     def insert(self, key: str, val: int) -> None:
         cur = self.root
