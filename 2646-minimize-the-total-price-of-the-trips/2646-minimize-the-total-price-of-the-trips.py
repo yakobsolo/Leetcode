@@ -46,6 +46,6 @@ class Solution:
             
             
         
-        ans = find(0, True, 0)
+        ans = find(0, True, -1)
         return sum(finalPrice)-ans
         
