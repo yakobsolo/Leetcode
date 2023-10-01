@@ -12,14 +12,11 @@ class Solution:
         nums= nums+nums
         l = 0
         window = 0
-        # print(target, nums, tot)
         temp = inf
-        for r in range(len(nums)):
+        for r in range(2*n):
             window +=nums[r]
-            # print(window)
             while l<n+n and window>target:
                 window-=nums[l]
-                # print(window, r, l)
                 l+=1
             if window == target:
                 temp = min(temp, r-l+1)
