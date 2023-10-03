@@ -1,16 +1,14 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
-        distances = {node: inf for node in range(1, n+1)}
         for s, d, t in times:
             # print(s)
             graph[s].append((d, t))
             
-#         print(graph[k]) 
-#         if len(graph[k]) == 0: return -1
+
             
         def dijkstra(graph, start):
-            # distances = {node: float('inf') for node in graph}
+            distances = {node: inf for node in range(1, n+1)}
             distances[start] = 0
             visited = set()
             q = [(0, start)]
