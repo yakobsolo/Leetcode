@@ -19,6 +19,6 @@ class Solution:
             for i in range(4):
                 x, y = r+direction[i][0], c+direction[i][1]
                 
-                if isValid(x, y) and (x, y) not in visted:
+                if isValid(x, y) and (x, y) not in visted :
                     num_obs = max(obs, grid[x][y]+obs)
                     heappush(heap,[num_obs, x, y])
