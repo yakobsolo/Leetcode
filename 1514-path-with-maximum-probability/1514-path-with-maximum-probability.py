@@ -24,12 +24,10 @@ class Solution:
             for child , succ in graph[cur_node]:
                 
                 prob  = succ*-cur_prob
-                # print(child, prob)
                 
                 if prob>dist[child]: 
                     dist[child] = prob
                     heappush(heap, [-prob, child])
-            #     print(heap)
-            # print(dist)
+            
         return 0
         
