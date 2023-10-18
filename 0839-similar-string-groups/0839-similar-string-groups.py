@@ -27,13 +27,13 @@ class Solution:
         for i in range(N):
             for j in range(i, N):
                 
-                if len(strs[i]) == len(strs[j]):
-                    c= 0
-                    for k in range(len(strs[i])):
-                        if strs[i][k] != strs[j][k]:
-                            c+=1
-                    if c<=2:
-                        union(strs[i], strs[j])
+                
+                c= 0
+                for k in range(len(strs[i])):
+                    if strs[i][k] != strs[j][k]:
+                        c+=1
+                if c<=2:
+                    union(strs[i], strs[j])
         
         hash = defaultdict(int)
         for c in strs:
