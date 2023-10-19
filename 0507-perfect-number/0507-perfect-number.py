@@ -1,15 +1,15 @@
 class Solution:
     def checkPerfectNumber(self, num: int) -> bool:
-        sm = 1
-        if num==1:
-            return False
-    
-        
-        i = 2
-        while i<=sqrt(num):
-            if num%i == 0:
-                sm += i+num//i
-            i+=1
-        if sm == num:
+        primes = {2, 3, 5, 7, 11, 13, 17, 19,23, 29, 31}
+        def isPrime(x):
+            d = 2
+            while d*d <=x:
+                if x%d == 0:
+                    return False
+                d+=1
             return True
+        for item in primes:
+            if isPrime(2**item -1):
+                if (2**(item-1))*((2**item)-1) == num:
+                    return True
         return False
