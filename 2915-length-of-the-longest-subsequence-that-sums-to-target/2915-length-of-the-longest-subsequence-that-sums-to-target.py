@@ -1,21 +1,20 @@
 class Solution:
     def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
-        nums.sort()
-        n = len(nums)
+        N  = len(nums)
 
-        memo = {}
-        def dp(index: int, total: int) -> int:
-            if (index, total) in memo:
-                return memo[(index, total)]
-            if total == 0:
+        dp = [[-1]*(target+1) for _ in range(N+1)]
+        def find(idx, tgt):
+        
+            if tgt == 0:
                 return 0
-            if index == n or total < nums[index]:
-                return -float("inf")
-            res = max(1 + dp(index + 1, total - nums[index]), dp(index + 1, total))
-            memo[(index, total)] = res
+            if idx == N or tgt<0:
+                return -inf
+            if dp[idx][tgt]!=-1: return dp[idx][tgt]
+            res = max(1 + find(idx + 1, tgt - nums[idx]), find(idx + 1, tgt))
+            dp[idx][tgt] = res
             return res
 
 
-        res = dp(0, target)
-        memo.clear() 
-        return res if res != -float("inf") else -1
+        ans = find(0, target)
+        if ans<0: return -1
+        return ans
