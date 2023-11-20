@@ -7,13 +7,17 @@
 class Solution:
     
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
-        if not inorder: return None
+        hashmap = {v:i for i, v in enumerate(inorder)}
         
-        val = postorder.pop()
-        root = TreeNode(val)
-        index = inorder.index(val)
-        root.right = self.buildTree(inorder[index+1:], postorder)
-        root.left = self.buildTree(inorder[:index], postorder)
+        def checker(l, r):
+            if l>r: return None
+            
+            root = TreeNode(postorder.pop())
+            index = hashmap[root.val]
+            root.right = checker(index+1, r)
+            root.left = checker(l, index-1)
+
+
+            return root
         
-        
-        return root
+        return checker(0, len(inorder)-1)
