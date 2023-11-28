@@ -2,7 +2,7 @@ class Solution:
     def lexicographicallySmallestArray(self, nums: List[int], limit: int) -> List[int]:
         size = len(nums)
         pair = [[nums[i], i] for i in range(0, size)]
-        pair = sorted(pair, key=lambda x : x[0])
+        pair.sort()
 
         result = [0] * size
 
