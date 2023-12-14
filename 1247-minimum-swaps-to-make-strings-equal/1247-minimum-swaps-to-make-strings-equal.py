@@ -10,4 +10,4 @@ class Solution:
         if (xy + yx) % 2:
             return -1
         
-        return xy // 2 + yx // 2 + (yx % 2) * 2
+        return xy // 2 + yx // 2 + (xy % 2) * 2
