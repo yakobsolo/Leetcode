@@ -17,9 +17,7 @@ class Solution:
             
         levelOrder(root, 0)
         if k> len(level): return -1
-        sm = []
-        for key, value in level.items():
-            sm.append(value)
+        sm = list(level.values())
         sm.sort()
         
         return sm[-k]
