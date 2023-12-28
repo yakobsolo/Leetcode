@@ -2,14 +2,16 @@ class Solution:
     def minimumCardPickup(self, cards: List[int]) -> int:
         N = len(cards)
         
-        count = defaultdict(list)
+        hash = {}
+        
+        mn = N+1
         
         for i in range(N):
-            count[cards[i]].append(i)
-        
-        mn  = inf
-        for key , values in count.items():
-            for i in range(1, len(values)):
-                mn = min(mn, values[i]-values[i-1])
-        return mn+1 if mn != inf else -1
-                
+            if cards[i] not in hash:
+                hash[cards[i]] = i
+            else:
+                if i-hash[cards[i]] < mn:
+                    mn = i-hash[cards[i]]
+                hash[cards[i]] = i
+        if mn == N+1:return -1
+        return mn+1
