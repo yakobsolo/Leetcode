@@ -6,27 +6,17 @@
 #         self.right = right
 class Solution:
     def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        hash = defaultdict(list)
-        def traverse(node, lev):
-            
-            if not node: return
+        def traverse(node1,node2,  lev):
+            if not node1 or not node2: return 
             
             
             if lev%2 == 1:
-                hash[lev].append(node.val)
+                node1.val, node2.val = node2.val, node1.val
                 
-            traverse(node.left, lev+1)
-            traverse(node.right, lev+1)
-        
-        traverse(root, 0)
-        
-        
-        def insert(node, lev):
-            if not node: return
+            traverse(node1.left, node2.right, lev+1)
+            traverse(node1.right, node2.left, lev+1)
             
-            if lev%2 == 1:
-                node.val = hash[lev].pop()
-            insert(node.left, lev+1)
-            insert(node.right, lev+1)
-        insert(root, 0)
+        traverse(root.left, root.right, 1)
         return root
+            
+            
