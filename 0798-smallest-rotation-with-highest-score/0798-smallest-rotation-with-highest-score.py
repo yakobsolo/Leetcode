@@ -3,8 +3,8 @@ class Solution:
         n = len(nums)
         P = [1] * n
         for i in range(n):
-            print((i - nums[i] + 1) % n)
+            # print((i - nums[i] + 1) % n)
             P[(i - nums[i] + 1) % n] -= 1
-        print(P)
+        # print(P)
         P = list(accumulate(P))
         return P.index(max(P))
