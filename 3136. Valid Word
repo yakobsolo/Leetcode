@@ -1,0 +1,21 @@
+class Solution:
+    def isValid(self, word: str) -> bool:
+        if len(word) <3: return False
+        lower = False
+        upper = False
+        vowel = False
+        consonant = False
+        vowelSet = ("a", "e", "i", "o", "u")
+        for i, v in enumerate(word):
+            if v.isalnum():
+                if v.isalpha():
+                    if v.lower() in vowelSet:
+                        vowel = True
+                    else:
+                        consonant = True
+                    
+            else:
+                return False
+        if vowel and consonant :
+            return True
+        return False
